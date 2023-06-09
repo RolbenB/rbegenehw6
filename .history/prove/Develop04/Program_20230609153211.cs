@@ -17,10 +17,10 @@ class MindfulnessApp
 
     static List<string> listingPrompts = new List<string>()
     {
-        "List as many things as you can that bring you happy.",
+        "List as many things as you can that bring you joy.",
         "Enumerate your strengths and skills.",
         "Think of positive experiences you've had in the past week and write them down.",
-
+        // Add more prompts as needed
     };
 
     static void Main(string[] args)
@@ -51,10 +51,10 @@ class MindfulnessApp
                     PerformListingActivity();
                     break;
                 case "4":
-                    Console.WriteLine("Thank you for using the Mindfulness App. Hope to see you soon, Goodbye!");
+                    Console.WriteLine("Thank you for using the Mindfulness App. Goodbye!");
                     return;
                 default:
-                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to exit.");
+                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to quit.");
                     break;
             }
 

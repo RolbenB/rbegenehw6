@@ -4,25 +4,6 @@ using System.Threading;
 
 class MindfulnessApp
 {
-    static Random random = new Random();
-
-    static List<string> reflectionPrompts = new List<string>()
-    {
-        "Reflect on a time when you faced an accident. What was your first reflexion?",
-        "Think about a moment, where you were about to leave your father's house to live with your wife/ houband. Explain your emotion",
-        "Explain How usually you overcome obstacles in your life",
-        "Explain your first day in a boat or airplain ",
-
-    };
-
-    static List<string> listingPrompts = new List<string>()
-    {
-        "List as many things as you can that bring you happy.",
-        "Enumerate your strengths and skills.",
-        "Think of positive experiences you've had in the past week and write them down.",
-
-    };
-
     static void Main(string[] args)
     {
         while (true)
@@ -51,10 +32,10 @@ class MindfulnessApp
                     PerformListingActivity();
                     break;
                 case "4":
-                    Console.WriteLine("Thank you for using the Mindfulness App. Hope to see you soon, Goodbye!");
+                    Console.WriteLine("Thank you for using the Mindfulness App. Goodbye!");
                     return;
                 default:
-                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to exit.");
+                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to quit.");
                     break;
             }
 
@@ -106,10 +87,6 @@ class MindfulnessApp
         Console.WriteLine();
 
         Console.WriteLine("Start your reflection...");
-
-        string prompt = GetRandomPrompt(reflectionPrompts);
-        Console.WriteLine(prompt);
-
         StartTimer(duration);
         Console.WriteLine();
 
@@ -133,10 +110,6 @@ class MindfulnessApp
         Console.WriteLine();
 
         Console.WriteLine("Start listing...");
-
-        string prompt = GetRandomPrompt(listingPrompts);
-        Console.WriteLine(prompt);
-
         StartTimer(duration);
         Console.WriteLine();
 
@@ -168,11 +141,5 @@ class MindfulnessApp
             Thread.Sleep(1000);
             Console.SetCursorPosition(0, Console.CursorTop);
         }
-    }
-
-    static string GetRandomPrompt(List<string> prompts)
-    {
-        int index = random.Next(prompts.Count);
-        return prompts[index];
     }
 }

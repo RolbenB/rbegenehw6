@@ -54,7 +54,7 @@ class MindfulnessApp
                     Console.WriteLine("Thank you for using the Mindfulness App. Hope to see you soon, Goodbye!");
                     return;
                 default:
-                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to exit.");
+                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to quit.");
                     break;
             }
 
