@@ -29,14 +29,14 @@ class MindfulnessApp
         {
             Console.Clear();
             Console.WriteLine("Menu Options: ");
-            Console.WriteLine("----------------");
+            Console.WriteLine("================");
             Console.WriteLine("1. Start Breathing Activity");
             Console.WriteLine("2. Start Reflection Activity");
             Console.WriteLine("3. Start Listing Activity");
             Console.WriteLine("4. Quit");
             Console.WriteLine();
 
-            Console.Write("Please, select a choice from the Menu: ");
+            Console.Write("Select a choice from the Menu: ");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -59,7 +59,7 @@ class MindfulnessApp
             }
 
             Console.WriteLine();
-            Console.WriteLine("Please, press any key to continue...");
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
     }
@@ -68,7 +68,7 @@ class MindfulnessApp
     {
         Console.Clear();
         Console.WriteLine("Welcome to the Breathing Activity!");
-        Console.WriteLine("----------------------------------");
+        Console.WriteLine("===================================");
         Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. Please clear your mind and focus on your breathing.");
         Console.WriteLine();
 
@@ -83,7 +83,7 @@ class MindfulnessApp
         StartTimer(duration);
         Console.WriteLine();
 
-        Console.WriteLine("Well done! You have completed the Breathing Activity for {0} seconds.", duration, "congratulations!");
+        Console.WriteLine("Well done! You have completed the Breathing Activity for {0} seconds.", duration);
         Thread.Sleep(3000);
     }
 
@@ -91,10 +91,11 @@ class MindfulnessApp
     {
         Console.Clear();
         Console.WriteLine("Welcome to Reflection Activity!");
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("This activity will help you reflect a past experience where you did something special.");
         Console.WriteLine();
-        Console.WriteLine("Take a moment to reflect on a past experience where you did something really special.");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+        Console.WriteLine("===================");
+        Console.WriteLine("Take a moment to reflect on a past experience where you did something really difficult.");
+        Console.WriteLine("Answer the following questions to explore the details of that experience.");
         Console.WriteLine();
 
         int duration = GetActivityDuration();
@@ -112,7 +113,7 @@ class MindfulnessApp
         StartTimer(duration);
         Console.WriteLine();
 
-        Console.WriteLine("Well done! You have completed the Reflection Activity for {0} seconds.", duration, "congratulations!");
+        Console.WriteLine("Well done! You have completed the Reflection Activity for {0} seconds.", duration);
         Thread.Sleep(3000);
     }
 
@@ -120,7 +121,7 @@ class MindfulnessApp
     {
         Console.Clear();
         Console.WriteLine("Welcome to the Listing Activity");
-        Console.WriteLine("-------------------------------");
+        Console.WriteLine("================");
         Console.WriteLine("Think broadly and list as many things as you can in a certain area of strength or positivity.");
         Console.WriteLine();
 
@@ -139,7 +140,7 @@ class MindfulnessApp
         StartTimer(duration);
         Console.WriteLine();
 
-        Console.WriteLine("Fantastic! You have completed the Listing Activity for {0} seconds.", duration, "congratulations!");
+        Console.WriteLine("Fantastic! You have completed the Listing Activity for {0} seconds.", duration);
         Thread.Sleep(3000);
     }
 

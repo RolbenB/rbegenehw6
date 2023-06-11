@@ -91,10 +91,11 @@ class MindfulnessApp
     {
         Console.Clear();
         Console.WriteLine("Welcome to Reflection Activity!");
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("This activity will help you reflect a past experience where you did something special.");
         Console.WriteLine();
-        Console.WriteLine("Take a moment to reflect on a past experience where you did something really special.");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+        Console.WriteLine("===================");
+        Console.WriteLine("Take a moment to reflect on a past experience where you did something really difficult.");
+        Console.WriteLine("Answer the following questions to explore the details of that experience.");
         Console.WriteLine();
 
         int duration = GetActivityDuration();
@@ -120,7 +121,7 @@ class MindfulnessApp
     {
         Console.Clear();
         Console.WriteLine("Welcome to the Listing Activity");
-        Console.WriteLine("-------------------------------");
+        Console.WriteLine("================");
         Console.WriteLine("Think broadly and list as many things as you can in a certain area of strength or positivity.");
         Console.WriteLine();
 

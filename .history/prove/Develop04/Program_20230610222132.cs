@@ -94,7 +94,8 @@ class MindfulnessApp
         Console.WriteLine("--------------------------------");
         Console.WriteLine("This activity will help you reflect a past experience where you did something special.");
         Console.WriteLine();
-        Console.WriteLine("Take a moment to reflect on a past experience where you did something really special.");
+        //Console.WriteLine("Take a moment to reflect on a past experience where you did something really difficult.");
+        //Console.WriteLine("Answer the following questions to explore the details of that experience.");
         Console.WriteLine();
 
         int duration = GetActivityDuration();
