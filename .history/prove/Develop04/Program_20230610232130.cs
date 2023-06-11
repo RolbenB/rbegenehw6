@@ -270,7 +270,7 @@ class MindfulnessApp
             if (int.TryParse(Console.ReadLine(), out duration) && duration > 0)
                 break;
             else
-                Console.WriteLine("Invalid duration. Please, enter a positive integer.");
+                Console.WriteLine("Invalid duration. Please enter a positive integer.");
         }
 
         return duration;

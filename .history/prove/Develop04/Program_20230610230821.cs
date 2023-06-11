@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-
 class Activity
 {
     private int _duration;
@@ -41,7 +37,7 @@ class Activity
         return "This is a base activity.";
     }
 
-    protected virtual void StartTimer()
+    protected void StartTimer()
     {
         for (int i = _duration; i > 0; i--)
         {
@@ -71,11 +67,10 @@ class BreathingActivity : Activity
 
 class ReflectionActivity : Activity
 {
-    private static Random _random = new Random();
-    private static List<string> _reflectionPrompts = new List<string>()
+    private List<string> _reflectionPrompts = new List<string>()
     {
         "Reflect on a time when you faced an accident. What was your first reflection?",
-        "Think about a moment where you were about to leave your father's house to live with your spouse. Explain your emotions.",
+        "Think about a moment, where you were about to leave your father's house to live with your wife/husband. Explain your emotions.",
         "Explain how you usually overcome obstacles in your life.",
         "Explain your first day in a boat or airplane."
     };
@@ -91,26 +86,28 @@ class ReflectionActivity : Activity
 
     protected override string GetIntroduction()
     {
-        return "This activity will help you reflect on a past experience where you did something special. Take a moment to reflect on a past experience where you did something really special.";
+        return "This activity will help you reflect on a past experience where you did something special.";
     }
 
     protected override void StartTimer()
     {
-        Console.WriteLine(GetRandomPrompt(_reflectionPrompts));
+        string prompt = GetRandomPrompt(_reflectionPrompts);
+        Console.WriteLine(prompt);
+
         base.StartTimer();
     }
 
     private string GetRandomPrompt(List<string> prompts)
     {
-        int index = _random.Next(prompts.Count);
+        Random random = new Random();
+        int index = random.Next(prompts.Count);
         return prompts[index];
     }
 }
 
 class ListingActivity : Activity
 {
-    private static Random _random = new Random();
-    private static List<string> _listingPrompts = new List<string>()
+    private List<string> _listingPrompts = new List<string>()
     {
         "List as many things as you can that bring you happiness.",
         "Enumerate your strengths and skills.",
@@ -133,13 +130,16 @@ class ListingActivity : Activity
 
     protected override void StartTimer()
     {
-        Console.WriteLine(GetRandomPrompt(_listingPrompts));
+        string prompt = GetRandomPrompt(_listingPrompts);
+        Console.WriteLine(prompt);
+
         base.StartTimer();
     }
 
     private string GetRandomPrompt(List<string> prompts)
     {
-        int index = _random.Next(prompts.Count);
+        Random random = new Random();
+        int index = random.Next(prompts.Count);
         return prompts[index];
     }
 }
@@ -165,19 +165,19 @@ class MindfulnessApp
             switch (choice)
             {
                 case "1":
-                    StartBreathingActivity();
+                    PerformActivity(new BreathingActivity(GetActivityDuration()));
                     break;
                 case "2":
-                    StartReflectionActivity();
+                    PerformActivity(new ReflectionActivity(GetActivityDuration()));
                     break;
                 case "3":
-                    StartListingActivity();
+                    PerformActivity(new ListingActivity(GetActivityDuration()));
                     break;
                 case "4":
                     Console.WriteLine("Thank you for using the Mindfulness App. Hope to see you soon. Goodbye!");
                     return;
                 default:
-                    Console.WriteLine("Invalid choice. Please take a number from 1 to 3 to choose an activity or 4 to exit.");
+                    Console.WriteLine("Invalid choice. Please choose a number from 1 to 3 to choose an activity or 4 to exit.");
                     break;
             }
 
@@ -185,79 +185,6 @@ class MindfulnessApp
             Console.WriteLine("Please, press any key to continue...");
             Console.ReadKey();
         }
-    }
-
-    static void StartBreathingActivity()
-    {
-        Console.Clear();
-        Console.WriteLine("Welcome to the Breathing Activity!");
-        Console.WriteLine("----------------------------------");
-        Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. Please clear your mind and focus on your breathing.");
-        Console.WriteLine();
-
-        int duration = GetActivityDuration();
-        Console.WriteLine();
-
-        Console.WriteLine("Get ready...");
-        Thread.Sleep(3000);
-        Console.WriteLine();
-
-        Console.WriteLine("Start breathing deeply...");
-        StartTimer(duration);
-        Console.WriteLine();
-
-        Console.WriteLine("Well done! You have completed the Breathing Activity for {0} seconds. Congratulations!", duration);
-        Thread.Sleep(3000);
-    }
-
-    static void StartReflectionActivity()
-    {
-        Console.Clear();
-        Console.WriteLine("Welcome to the Reflection Activity!");
-        Console.WriteLine("----------------------------------");
-        Console.WriteLine("This activity will help you reflect on a past experience where you did something special. Take a moment to reflect on a past experience where you did something really special.");
-        Console.WriteLine();
-
-        int duration = GetActivityDuration();
-        Console.WriteLine();
-
-        Console.WriteLine("Prepare to begin...");
-        Thread.Sleep(3000);
-        Console.WriteLine();
-
-        Console.WriteLine("Start your reflection...");
-
-        ReflectionActivity reflectionActivity = new ReflectionActivity(duration);
-        reflectionActivity.StartActivity();
-
-        Console.WriteLine();
-        Console.WriteLine("Well done! You have completed the Reflection Activity for {0} seconds. Congratulations!", duration);
-        Thread.Sleep(3000);
-    }
-
-    static void StartListingActivity()
-    {
-        Console.Clear();
-        Console.WriteLine("Welcome to the Listing Activity!");
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("Think broadly and list as many things as you can in a certain area of strength or positivity.");
-        Console.WriteLine();
-
-        int duration = GetActivityDuration();
-        Console.WriteLine();
-
-        Console.WriteLine("Prepare to begin...");
-        Thread.Sleep(3000);
-        Console.WriteLine();
-
-        Console.WriteLine("Start listing...");
-
-        ListingActivity listingActivity = new ListingActivity(duration);
-        listingActivity.StartActivity();
-
-        Console.WriteLine();
-        Console.WriteLine("Fantastic! You have completed the Listing Activity for {0} seconds. Congratulations!", duration);
-        Thread.Sleep(3000);
     }
 
     static int GetActivityDuration()
@@ -270,19 +197,14 @@ class MindfulnessApp
             if (int.TryParse(Console.ReadLine(), out duration) && duration > 0)
                 break;
             else
-                Console.WriteLine("Invalid duration. Please, enter a positive integer.");
+                Console.WriteLine("Invalid duration. Please enter a positive integer.");
         }
 
         return duration;
     }
 
-    static void StartTimer(int duration)
+    static void PerformActivity(Activity activity)
     {
-        for (int i = duration; i > 0; i--)
-        {
-            Console.Write("Time remaining: {0} seconds", i);
-            Thread.Sleep(1000);
-            Console.SetCursorPosition(0, Console.CursorTop);
-        }
+        activity.StartActivity();
     }
 }
