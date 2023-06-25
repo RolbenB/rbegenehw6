@@ -202,7 +202,7 @@ public class Program
                     int.TryParse(Console.ReadLine(), out goalPoints);
                     Goal newGoal = new SimpleGoal(goalName, goalDescription, goalPoints);
                     tracker.AddGoal(newGoal);
-                    Console.WriteLine("Very good! Goals saved successfully!");
+                    Console.WriteLine("Goal created successfully!");
                     break;
                 case 2:
                     Console.WriteLine("Listing Goals...");

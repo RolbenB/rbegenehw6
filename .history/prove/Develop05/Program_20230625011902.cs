@@ -136,11 +136,11 @@ public class GoalTracker
         {
             string jsonString = JsonSerializer.Serialize(_goals);
             File.WriteAllText(fileName, jsonString);
-            Console.WriteLine("Very good! Goals saved successfully!");
+            Console.WriteLine("Goals saved successfully!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Sorry, you failed to save goals: {ex.Message}");
+            Console.WriteLine($"Failed to save goals: {ex.Message}");
         }
     }
 
@@ -150,11 +150,11 @@ public class GoalTracker
         {
             string jsonString = File.ReadAllText(fileName);
             _goals = JsonSerializer.Deserialize<List<Goal>>(jsonString);
-            Console.WriteLine("Very good! Goals saved successfully!");
+            Console.WriteLine("Goals loaded successfully!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Sorry, yuu failed to load goals: {ex.Message}");
+            Console.WriteLine($"Failed to load goals: {ex.Message}");
         }
     }
 }
@@ -186,7 +186,7 @@ public class Program
             Console.WriteLine("  4. Record event");
             Console.WriteLine("  5. Quit");
 
-            Console.Write("Please, select a choice from the menu: ");
+            Console.Write("Select a choice from the menu: ");
             int.TryParse(Console.ReadLine(), out choice);
 
             switch (choice)
@@ -202,7 +202,7 @@ public class Program
                     int.TryParse(Console.ReadLine(), out goalPoints);
                     Goal newGoal = new SimpleGoal(goalName, goalDescription, goalPoints);
                     tracker.AddGoal(newGoal);
-                    Console.WriteLine("Very good! Goals saved successfully!");
+                    Console.WriteLine("Goal created successfully!");
                     break;
                 case 2:
                     Console.WriteLine("Listing Goals...");
