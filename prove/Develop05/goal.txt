@@ -1,1 +1,2 @@
-[{"GoalName":"jesus","GoalDescription":"jesus","GoalPoints":50},{"GoalName":"God","GoalDescription":"God","GoalPoints":50},{"GoalName":"angel","GoalDescription":"angel","GoalPoints":50}]
+Simple Goal:Friendship,make more fiends,100
+Simple Goal:Bible,read it in one year,100
